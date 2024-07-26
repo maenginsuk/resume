@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹퍼블리셔 맹인숙입니다.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Damion&family=Gowun+Dodum&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        *{margin: 0;padding: 0;}
+        a{text-decoration: none;color: #333;}
+        img{vertical-align: bottom;}
+        body{font-family: 'Gowun Dodum', '맑은 고딕',sans-serif;}
+        li{list-style: none;}
+        /* 스타일 */
+        .btn{position: absolute;bottom: 0;width: 80px;height: 80px;border-top-left-radius: 40px;border-top-right-radius:40px;border:2px solid #fff;text-align: center;margin-bottom: -2px;cursor: pointer;}
+        .btn i{line-height: 80px;font-size: 2em;margin-top: 10px;color: #fff;text-shadow: 0 1px 2px #333;transition: all .3s;animation: downArr 1s infinite;}
+        @keyframes downArr {
+            0%{margin-top: 0}
+            100%{margin-top: 20px}
+        }
+        @keyframes slideLeft {
+            0%{}
+            100%{}
+        }
+        @keyframes slideRight {
+            
+        }
+        header.nav{position: fixed; width: 100%;background-color: rgba(255,255,255,.6);z-index: 90; top: 0;box-shadow: 0 1px 4px #333;height: 40px;}
+        .nav h1{text-transform: uppercase;position: absolute; left: 20px;line-height: 40px;cursor: pointer;}
+        .nav ul{position: absolute;right: 20px; display: flex;}
+        .nav ul a{line-height: 40px;margin-left: 20px; text-transform: capitalize;display: block;}
+
+        section{display: flex;flex-direction:column;align-items: center; justify-content: center;height: 100vh;position: relative;overflow: hidden;}
+
+        section.intro{background: linear-gradient(135deg, rgba(88,82,97,1) 0%,rgba(95,79,89,1) 100%);}
+        .intro h1{font-size: 10em;letter-spacing: 16px;text-shadow: 0 1px 4px rgba(255,255,255,.2);}
+
+        section.do{background: url('http://iizzy.dothome.co.kr/webIMG/port04.jpg') no-repeat center center/cover;background-attachment: fixed;position: relative;}
+        .do .content{opacity: 0;right: -100%;position: absolute;}
+        .do div:first-child{width: 400px;height: 400px;background: #fff;padding: 20px;}
+        .do div:first-child h3{border-bottom: 1px dashed #666;padding-bottom: 10px;}
+
+        section.iam{background: linear-gradient(135deg, rgba(93,116,109,1) 0%,rgba(36,27,22,1) 100%);}
+        .iam .content{position: absolute;left: -100%;opacity: 0;}
+        .iam div:first-child{width: 400px;height: 400px;background: #fff;padding: 20px;}
+        .iam div:first-child h3{border-bottom: 1px dashed #666;padding-bottom: 10px;}
+
+        section.works{background-image: linear-gradient(104deg, #000732, #0c3d5e, #16758d, #15b2bf)}
+
+        .works{display: block;}
+        .workList{display: flex; width:80%;flex-wrap: wrap;justify-content: space-between;}
+        .works .workList >div{width: 300px;height: 200px;margin-bottom: 50px;position: absolute;}
+        .works .workList >div:nth-child(1){background-image: linear-gradient(132deg, #193360, #2c5d84, #3d8baa, #4dbbd1);}
+        .works .workList >div:nth-child(2){background-image: linear-gradient(218deg, #193360, #2c5d84, #3d8baa, #4dbbd1);}
+        .works .workList >div:nth-child(3){background-image: linear-gradient(55deg, #193360, #2c5d84, #3d8baa, #4dbbd1);}
+        .works .workList >div:nth-child(4){background-image: linear-gradient(314deg, #193360, #2c5d84, #3d8baa, #4dbbd1);}
+
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        $(function(){
+            var top =$('section').eq(0).height();
+            //console.log(top);
+
+            $(window).scroll(function(){
+                //console.log($('html').scrollTop());
+            });
+
+            $('.nav h1').click(function(){
+                $('html,body').stop().animate({scrollTop:0},500)
+            })
+            $('.nav a').click(function(e){e.preventDefault();});
+
+           /*  $('.nav li').eq(0).click(function(){
+                $('html,body').stop().animate({scrollTop:0},500)
+            })
+            $('.nav li').eq(1).click(function(){
+                $('html,body').stop().animate({scrollTop:top},500)
+            })
+            $('.nav li').eq(2).click(function(){
+                $('html,body').stop().animate({scrollTop:top*2},500)
+            })
+            $('.nav li').eq(3).click(function(){
+                $('html,body').stop().animate({scrollTop:top*3},500)
+            })
+            $('.nav li').eq(4).click(function(){
+                $('html,body').stop().animate({scrollTop:top*4},500)
+            }) */
+
+            $('.nav li').each(function(idx){
+                $(this).click(function(){
+                    $('html,body').stop().animate({scrollTop:top*idx},500)
+                })
+            });
+
+            // 화살표 버튼 클릭하면 아래 section 이 브라우저 처음위치에 오게 해보세요 [[ 과제 ]]
+            $('.btn01').click(function(){
+                var top=$('.do').height();
+                //console.log(top);
+                $('html,body').stop().animate({scrollTop:top},500)
+            })
+            $('.btn02').click(function(){
+                var top=$('.iam').height();
+                
+                $('html,body').stop().animate({scrollTop:top*2},500)
+            })
+            $('.btn03').click(function(){
+                var top=$('.works').height();
+                //console.log(top);
+                $('html,body').stop().animate({scrollTop:top*3},500)
+            })
+            
+            // What i do 영역쯤 스크롤 될때,
+            // 저 흰색의 div 가 왼쪽에서 가운데쯤으로 이동하게 만들어 보기
+            // 영역에서 벗어나면 다시 돌아가게..
+            // css에서 오른쪽에서 opacity :0 으로 있다가
+            // jquery에서 .animate({},500) 사용해서 가운데로 나오기 opcity:1
+            $('.workList div:odd').css({opacity:'0',left:'-100%'})
+            $('.workList div:even').css({opacity:'0',right:'-100%'})
+            $('.workList div:gt(1)').css({top:'300px'})
+            $(window).scroll(function(){
+                var top=$('section').eq(0).height();
+                var currentTop=$('html,body').scrollTop();
+                //console.log(currentTop);
+                //console.log(top);
+
+                //what  i do
+                if(top-100 <= currentTop && currentTop<=top*2){
+                    $('.do .content').stop().animate({right:'100px',opacity:'1'},500)
+                }else{
+                    $('.do .content').stop().animate({right:'-100%',opacity:'0'},200)
+                }
+                //what  i am
+                if(top*2-100 <= currentTop && currentTop<=top*3){
+                    $('.iam .content').stop().animate({left:'100px',opacity:'1'},500)
+                }else{
+                    $('.iam .content').stop().animate({left:'-100%',opacity:'0'},200)
+                }
+                //my works
+                
+                if(top*3-100 <= currentTop && currentTop<=top*4){
+                    $('.workList div:odd').stop().animate({left:'100px',opacity:'1'},500)
+                    $('.workList div:even').stop().animate({right:'100px',opacity:'1'},500)
+                }else{
+                    $('.workList div:odd').stop().animate({left:'-100%',opacity:'0'},200)
+                    $('.workList div:even').stop().animate({right:'-100%',opacity:'0'},200)
+                }
+            })
+
+
+        })//ready
+    </script>
+    <header class="nav">
+        <h1>my portfolio</h1>
+        <ul>
+            <li><a href='#'>intro</a></li>
+            <li><a href='#'>what i Do</a></li>
+            <li><a href='#'>what i am</a></li>
+            <li><a href='#'>my works</a></li>
+            <li><a href='#'>contact</a></li>
+        </ul>
+    </header>
+    <section class="intro">
+        <h1>hello</h1>
+        <h3>Maeng 의 포토폴리오 페이지에 오신걸 환영합니다.</h3>
+        <div class="btn btn01"><i class="fas fa-long-arrow-alt-down"></i></div>
+    </section>
+    <section class="do">
+        <div class="content">
+            <h1>What I Do</h1>
+            <h3>경력 및 경험</h3>
+        </div>
+        <div class="btn btn02"><i class="fas fa-long-arrow-alt-down"></i></div>
+    </section>
+    <section class="iam">
+        <div class="content">
+            <h1>What I Am</h1>
+            <h3>나의 소개</h3>
+        </div>
+        <div class="btn btn03"><i class="fas fa-long-arrow-alt-down"></i></div>
+    </section>
+    <section class="works">
+        <div>
+            <h1>my work</h1>
+            <h3>웹사이트</h3>
+        </div>
+        <div class="workList">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </section>
+    <section class="contact">
+        <div>
+            <h1>Say Hello</h1>
+            <h3>연락하실분..</h3>
+        </div>
+        <div class="message">
+            <input type="text" placeholder="your Name" id="user_name">
+            <input type="email" id="user_email" placeholder="E-mail"><br>
+            <textarea name="user_massage" id="user_massage" cols="30" rows="10" placeholder="message"></textarea>
+            <p>send Message</p>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="sns">
+            <a href=""><i class="fab fa-instagram"></i></a>
+            <a href=""></a>
+        </div>
+    </footer>
+</head>
+<body>
+    
+</body>
+</html>
